@@ -19,11 +19,10 @@ def hmc_1d(target_distribution, initial_state, iterations=10_000, step_size=0.1,
         x0 = samples[-1]
         v0 = np.random.normal()
 
-        # Perform the leapfrog integration
         if integrator == 'leapfrog':
             x_star, v_star, trace_x, trace_v = leapfrog_1d(dVdx, x0, v0, step_size, n_steps)
 
-        # Metropolis-Hastings step
+        # Metropolis acceptance step
         m0 = -target_distribution.log_pdf(x0) + 0.5 * v0**2
         m_star = -target_distribution.log_pdf(x_star) + 0.5 * v_star**2
         accept_prob = np.exp(m0 - m_star)

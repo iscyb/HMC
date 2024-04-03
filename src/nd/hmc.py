@@ -27,7 +27,6 @@ def hmc_nd(target_distribution, initial_state, iterations=10_000, step_size=0.1,
         x0 = samples[-1]
         v0 = np.random.normal(size=initial_state.shape) 
 
-        # Perform the leapfrog integration
         if integrator == 'leapfrog':
             trace_x, trace_v, x_star, v_star = leapfrog(dVdx, x0, v0, step_size, n_steps)
         elif integrator == 'euler':
