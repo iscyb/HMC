@@ -4,12 +4,12 @@ import numpy as np
 
 def leapfrog(dVdx, x, v, h, N, M=None):
     """
-    dVdx - a function returning the gradient of the potential energy with respect to position x
-    x - initial position, could be a scalar or a numpy array for multivariate cases
-    v - initial velocity, same dimensions as x
+    dVdx - gradient of the potential energy wrt position (parameter), a function
+    x - position, array
+    v - velocity, array
     h - step length
     N - number of steps
-    M - mass matrix, optional; if None, identity is assumed
+    M - mass matrix (optional; if None, identity is assumed)
     """
     
     x = np.asarray(x)
@@ -41,13 +41,12 @@ def leapfrog(dVdx, x, v, h, N, M=None):
 
 def euler(dVdx, x, v, h, N, M=None):
     """
-    Args:
-    - dVdx: Function returning the gradient of the potential energy with respect to position x.
-    - x: Initial position, could be a scalar or a numpy array for multivariate cases.
-    - v: Initial velocity, same dimensions as x.
-    - h: Step length.
-    - N: Number of steps.
-    - M: Mass matrix, optional; if None, identity is assumed.
+    dVdx - gradient of the potential energy wrt position (parameter), a function
+    x - position, array
+    v - velocity, array
+    h - step length
+    N - number of steps
+    M - mass matrix (optional; if None, identity is assumed)
     """
     x = np.asarray(x)
     v = np.asarray(v)
@@ -71,15 +70,15 @@ def euler(dVdx, x, v, h, N, M=None):
 
 def split_step(dVdx, x, v, h, N, b=0.2118, M=None):
     """
-    Args:
-    - dVdx: Function returning the gradient of the potential energy with respect to position x.
-    - x: Initial position, could be a scalar or a numpy array for multivariate cases.
-    - v: Initial velocity, same dimensions as x.
-    - h: Step length.
-    - N: Number of steps.
-    - b: Parameter defining the fraction of the step for velocity updates in the split-step method.
+    dVdx - gradient of the potential energy wrt position (parameter), a function
+    x - position, array
+    v - velocity, array
+    h - step length
+    N - number of steps
+    M - mass matrix (optional; if None, identity is assumed)
+    b - Parameter defining the fraction of the step for velocity updates in the split-step method.
         Important values: minimal error: 0.1932. An alernative is b = 0.2118 : Source Sanz Serna
-    - M: Mass matrix, optional; if None, identity is assumed.
+    M - mass matrix (optional; if None, identity is assumed)
     """
     x = np.asarray(x)
     v = np.asarray(v)

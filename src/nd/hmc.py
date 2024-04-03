@@ -6,12 +6,12 @@ from integrators import leapfrog, euler, split_step
 
 def hmc_nd(target_distribution, initial_state, iterations=10_000, step_size=0.1, n_steps=10, integrator='leapfrog'):
     """
-    Parameters:
     - target_distribution: An object with .log_pdf(x) and .dVdx(x) methods.
     - initial_state: A numpy array representing the initial state in the parameter space.
     - iterations: Number of iterations to run the HMC sampler.
-    - step_size: Step size (epsilon) for the leapfrog integrator.
+    - step_size: Step size (epsilon) for the integrator.
     - n_steps: Number of leapfrog steps per HMC iteration.
+    - integrator - leapfrog / euler etc
     """
     samples = [initial_state]
     accept_or_not = []
